@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { width: 300px; padding: 15px; font-family: sans-serif; }
+    h3 { margin-top: 0; color: #333; }
+    input { width: 100%; padding: 8px; margin-bottom: 10px; box-sizing: border-box; }
+    button { 
+      width: 100%; padding: 10px; background-color: #0479d9; 
+      color: white; border: none; cursor: pointer; font-weight: bold; 
+    }
+    button:hover { background-color: #035a9f; }
+    .status { margin-top: 10px; font-size: 12px; color: #666; }
+  </style>
+</head>
+<body>
+  <h3>Course Bot</h3>
+  <label for="courseCode">Enter Course Code:</label>
+  <input type="text" id="courseCode" placeholder="e.g. CSE340-[02]">
+  
+  <button id="btnAdd">Add Course</button>
+  
+  <div class="status" id="status">Ready.</div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

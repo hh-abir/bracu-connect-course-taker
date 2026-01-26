@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Advising Panel Auto-Adder",
+  "version": "1.0",
+  "description": "Automates adding courses in the advising panel.",
+  "permissions": ["activeTab", "scripting"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon.jpg", 
+      "48": "icon.jpg",
+      "128": "icon.jpg"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}

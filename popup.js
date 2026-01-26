@@ -1,26 +1,41 @@
-document.getElementById('btnAdd').addEventListener('click', async () => {
-  const courseCode = document.getElementById('courseCode').value;
+document.getElementById('btnStart').addEventListener('click', async () => {
+  const rawInput = document.getElementById('courseList').value;
   const statusDiv = document.getElementById('status');
 
-  if (!courseCode) {
-    statusDiv.textContent = "Please enter a course code.";
+  if (!rawInput) {
+    statusDiv.textContent = "Please enter course codes.";
     return;
   }
 
-  statusDiv.textContent = "Processing...";
+  const courses = rawInput.split(',')
+                          .map(c => c.trim())
+                          .filter(c => c.length > 0);
 
-  // Get the current active tab
+  if (courses.length === 0) {
+    statusDiv.textContent = "No valid courses found.";
+    return;
+  }
+
+  statusDiv.textContent = `Processing ${courses.length} courses...`;
+
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
 
-  // Send a message to the content script running on the page
+  // Safety check: is the tab valid?
+  if (!tab) {
+      statusDiv.textContent = "Error: No active tab found.";
+      return;
+  }
+
   chrome.tabs.sendMessage(tab.id, { 
-    action: "ADD_COURSE", 
-    code: courseCode 
+    action: "ADD_MULTIPLE", 
+    courses: courses 
   }, (response) => {
+    // If the content script isn't running (e.g., after reload), this error occurs
     if (chrome.runtime.lastError) {
-      statusDiv.textContent = "Error: Refresh the page and try again.";
+      console.error(chrome.runtime.lastError);
+      statusDiv.innerHTML = "<span style='color:red'><b>Error:</b> Refresh the Advising Page (F5) and try again.</span>";
     } else {
-      statusDiv.textContent = "Command sent!";
+      statusDiv.textContent = "Queue started! Check the page.";
     }
   });
 });

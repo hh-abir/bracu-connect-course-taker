@@ -30,7 +30,6 @@ document.getElementById('btnStart').addEventListener('click', async () => {
     action: "ADD_MULTIPLE", 
     courses: courses 
   }, (response) => {
-    // If the content script isn't running (e.g., after reload), this error occurs
     if (chrome.runtime.lastError) {
       console.error(chrome.runtime.lastError);
       statusDiv.innerHTML = "<span style='color:red'><b>Error:</b> Refresh the Advising Page (F5) and try again.</span>";

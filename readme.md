@@ -6,7 +6,7 @@ Streamline your advising process at BRAC University. This extension allows you t
 
 ### 🎥 Feature Showcase
 
-<video src="docs/showcase.mp4" width="600" controls></video>
+<video src="https://github.com/user-attachments/assets/ea803fd3-01fe-4d62-ae50-6229d061053a" width="600" controls></video>
 
 ---
 

@@ -6,7 +6,7 @@ Streamline your advising process at BRAC University. This extension allows you t
 
 ### 🎥 Feature Showcase
 
-<video src="https://github.com/hh-abir/bracu-connect-course-taker/blob/main/docs/showcase.mp4" width="100%" controls></video>
+<video src="docs/showcase.mp4" width="600" controls></video>
 
 ---
 
